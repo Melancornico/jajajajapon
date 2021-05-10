@@ -1,0 +1,905 @@
+:root{
+    --green: #0bb443;
+    --white: #ffff;
+    --background: #f1f1f1;
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body{
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(255, 255, 255, 0.534);
+}
+
+
+/* Info principal */
+ .info-principal{ 
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 60px;
+    background-color: #f7f7f7;
+    z-index: 10;
+}
+
+.info-principal .fa-whatsapp{
+    margin-top: 10px;
+    margin-left: 350px;
+    font-size: 40px;
+    color: var(--green);
+}
+
+.info-principal .fa-whatsapp+p{
+    margin: 20px 3px;
+    display: inline;
+    color: var(--green);
+    font-weight: 500;
+}
+
+.info-principal .fa-envelope{
+    margin-top: 13px;
+    margin-left: 100px;
+    font-size: 30px;
+    color: #9b9999;
+}
+
+.info-principal .fa-envelope+p{
+    margin: 20px 3px;
+    display: inline;
+    color: #585656;
+}
+
+.info-principal .fa-phone-alt{
+    margin-top: 13px;
+    margin-left: 100px;
+    font-size: 30px;
+    color: #9b9999;
+}
+
+.info-principal .fa-phone-alt+p{
+    margin: 20px 3px;
+    display: inline;
+    color: #585656;
+}
+
+.contenedor{
+    margin: auto;
+    width: 90%;
+    max-width: 1000px;
+}
+
+
+
+/*Enlaces del nav*/
+.menu{
+    background-color: #ffffff;
+    padding: 0px 0;
+}
+
+.link-muebles{
+    display: none;
+}
+
+
+.menu .logo-menu{
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: -160px;
+    padding-right: 30px;
+    min-width: 140px;
+    max-height: 100px;
+    object-fit: cover;
+}
+.menu .contenedor-botones-menu{
+    /* display: flex; */
+    display: none;
+    justify-content: space-between;
+}
+
+.menu .contenedor-botones-menu button{
+    font-size: 20px;
+    color: black;
+    padding: 18px 20px;
+    border: 1px solid transparent;
+    display: inline-block;
+    cursor: pointer;
+    background: none;
+}
+
+.menu .contenedor-botones-menu button:hover{
+    color: var(--green);
+}
+
+.menu .contenedor-botones-menu .btn-menu-cerrar{
+    display: none;
+}
+
+.menu .contenedor-botones-menu .btn-menu-cerrar.activo{
+    display: inline-block;
+}
+
+.menu .contenedor-enlaces-nav{
+    display: flex;
+    align-items: center;
+}
+
+.menu .contenedor-enlaces-nav a{
+    margin-right: 10px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.menu .contenedor-enlaces-nav a:hover{
+    margin-right: 10px;
+    color: var(--green);
+    text-decoration: none;
+}
+
+.menu .contenedor-enlaces-nav p{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.menu .contenedor-enlaces-nav p:hover{
+    color: var(--green);
+}
+
+.menu .btn-categorias{
+    color: #000000;
+    padding: 1px;
+    border-radius: 3px;
+    display: flex;
+    align-items: flex-end;
+    cursor: default;
+}
+
+/* Subcategorias*/
+.contenedor-grid{
+    position: relative;
+}
+
+.grid{
+    width: 100%;
+    display: none;
+    /* background: rgb(230, 230, 230); */
+    position: absolute;
+    top: 140px;
+    
+    z-index: 1000;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: "categorias subcategorias subcategorias subcategorias";
+}
+
+.grid.activo{
+    display: grid;
+    
+}
+
+.grid::before{
+    content: "";
+    display: block;
+    background: transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid var(--green);
+    position: absolute;
+    top: -5px;
+    left: 55px;
+}
+
+.grid > div{
+    background: #ffff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 10);
+}
+
+/* Categorias */
+.grid .btn-regresar{
+    background: rgb(255, 255, 255);
+    color: var(--green);
+    border: none;
+    padding: 10px;;
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+}
+
+.grid .btn-regresar i{
+    margin-right: 5px;
+}
+
+.grid .categorias{
+    grid-area: categorias;
+    padding-top: 10px;
+    min-height: 300px;
+    /* height: 100%;
+    max-height: 300px;
+    overflow: auto; */
+    overflow: auto;
+
+}
+
+.grid .categorias .subtitulo{
+    display: none;
+}
+
+.grid .categorias a{
+    color: #000000;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    text-decoration: none;
+}
+
+.grid .categorias a i{
+    display: none;
+}
+
+.grid .categorias a:hover{
+    color: var(--green);
+    font-weight: bold;
+}
+
+/*Subcategorias*/
+.grid .contenedor-subcategorias{
+    grid-area: subcategorias;
+}
+
+.grid .subcategoria{
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    height: 100%;
+}
+
+.grid .subcategoria.activo{
+    display: grid;
+}
+
+.grid .subcategoria img{
+    width: 100%;
+    vertical-align: top;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid .enlaces-subcategoria{
+    padding-top: 10px;
+    height: 100%;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.grid .enlaces-subcategoria a{
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    margin-left: 10%;
+    color: #000000;
+    font-size: 14px;
+}
+
+.grid .enlaces-subcategoria a:hover{
+   color: var(--green);
+}
+
+.grid .subtitulo{
+    font-size: 25px;
+    font-weight: normal;
+    color: var(--green);
+    padding: 10px 20px;
+}
+
+.grid .banner-subcategoria a{
+    display: block;
+    height: 100%;
+}
+
+/* Contacto */
+.contacto{
+    width: 100%;
+    height: 600px;
+    background-color: #5cdd62de;
+}
+
+.contacto-caja{
+    position: absolute;
+    margin: 25px;
+    margin-left: 100px;
+    width: 85%;
+    height: 550px;
+    background-color: #ffffff;
+}
+
+.contacto-caja p{
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.horario{
+    margin-top: 150px;
+    margin-left: 50px;
+    font-weight: 500;
+    color: var(--green);
+}
+
+.reloj{
+    margin-top: 30px;
+    margin-left: 100px;
+    width: 100px;
+}
+
+.ubicacion{
+    margin-top: -220px;
+    margin-left: 475px;
+}
+
+.ubicacion p{
+    margin-left: 0px;
+}
+
+.location{
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 150px;
+}
+
+.ubi{
+    color: var(--green);
+    font-weight: 500;
+}
+
+.llamanos{
+    margin-top: -250px;
+    margin-left: 900px;
+}
+
+.telefono-contacto{
+    color: var(--green);
+    font-weight: 500;
+}
+
+.llamanos p{
+    margin-left: 0px;
+    margin-top: 20px;
+}
+
+.contacto-img{
+    margin-top: 10px;
+    width: 125px;
+}
+
+/*Footer */
+footer{
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(66, 66, 66,0.1);
+}
+
+.footer-contenido{
+    display: flex;
+}
+
+.footer-contenido .box{
+    flex-basis: 50%;
+    padding: 20px 100px;
+}
+
+.box h3{
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.box .contenido{
+    margin: 20px 0 0 0;
+}
+
+.left .contenido .social {
+    margin: 20px 0 0 0;
+}
+
+.left .contenido .social a{
+    padding: 0 2px;
+}
+
+.left .contenido .social a span{
+    height: 40px;
+    width: 40px;
+    background: #1a1a1a;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.left .contenido .social a span:hover{
+    background: #27c75d;
+}
+
+.logo-footer{
+    width: 120px;
+}
+
+.fab fa-facebook-f{
+    width: 100px;
+}
+
+.acerca-footer{
+    font-size: 30px;
+}
+
+.eslogan{
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.logo-fb{
+    font-size: 50px;
+    margin-left: 30px;
+    color: #2a27b8;
+}
+
+.social{
+    margin-top: 20px;
+}
+
+.logo-fb:hover{
+    color: #0bb443;
+}
+
+.direccion-contenido{
+    padding-top: 30px;
+}
+
+.place:hover{
+    color: var(--green);
+}
+
+.telefono{
+    margin-top: 20px;
+}
+
+.telefono:hover{
+    color: var(--green);
+}
+
+
+
+.nombre{
+    margin-top: 20px;
+    color: var(--green);
+}
+
+.email{
+    margin-top: 10px;
+    color: var(--green);
+}
+
+.mensaje{
+    margin-top: 10px;
+    color: var(--green);
+}
+
+.correo{
+    margin-top: 20px;
+}
+
+.correo:hover{
+    color: var(--green);
+}
+
+input{
+    width: 200px;
+    height: 25px;
+}
+
+input,textarea{
+    outline: none;
+}
+
+.t-nombre{
+    border: solid 1px #999;
+    border-radius: 3px;
+    background: #ffffff;
+}
+
+.t-email{
+    border: solid 1px #999;
+    border-radius: 3px;
+}
+
+.t-tarea{
+    border: solid 1px #999;
+    border-radius: 3px;
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: rgb(0, 0, 0);
+}
+
+.boton-formulario{
+    width: 100px;
+    height: 30px;
+    background-color: var(--green);
+    color: #f1f1f1;
+    margin-left: 65px;
+    border: none;
+    cursor: pointer;
+}
+
+.boton-formulario:hover{
+    color: var(--green);
+    background-color: #ffffff;
+}
+
+.mapa{
+    margin-top: 20px;
+}
+
+.copy{
+    margin-left: 450px;
+    font-weight: 400;
+}
+
+@media only screen and (max-width:900px)
+{
+   .info-principal{
+       display: none;
+   }
+
+   .menu .logo-menu{
+    position: relative;
+    margin: 0 150px;
+    min-width: 140px;
+    max-height: 100px;
+    object-fit: cover;
+}
+
+.menu .logo-menu2{
+    position: relative;
+    margin-left: 150px;
+    min-width: 20px;
+    max-height: 80px;
+    object-fit: cover;
+}
+   
+
+   .menu .contenedor{
+       width: 90%;;
+   }
+
+   .menu .contenedor-botones-menu{
+       display: flex;
+   }
+
+   .menu .contenedor-enlaces-nav{
+       padding: 20px;
+       flex-direction: column;
+       align-items: flex-start;
+       justify-content: flex-start;
+       position: fixed;
+       left: 0;
+       height: 100vh;
+       width: 80%;
+       background-color: #ffffff;
+       z-index: 20;
+       transition: .3s ease all;
+       transform: translate(-100%);
+   }
+
+   .menu .contenedor-enlaces-nav.activo{
+        transform: translate(0%);
+   }
+
+   .menu .btn-categorias{
+       width: 100%;
+       align-items: center;
+       justify-content: space-between;
+       cursor: pointer;
+   }
+
+  .menu .enlaces{
+      width: 100%;
+      margin-top: -70px;
+      margin-left: -10px;
+      padding-top: 10px;
+  }
+
+  .btn-categorias p{
+    width: 100%;
+    margin-top: -150px;
+  }
+
+  .menu .enlaces a{
+      display: block;
+      margin: 30px 0;
+      padding: 10px;
+
+  }
+
+  .grid{
+      display: grid;
+      transition: .3s ease all;
+      transform: translate(-110%);
+      z-index: 30;
+      width: 80%;
+      position: fixed;
+      top: 0;
+      height: 100vh;
+      left: 0%;
+      grid-template-areas: "categorias categorias categorias categorias";
+  }
+
+  .grid.activo{
+      transform: translate(0);
+  }
+
+  .grid:before{
+      display: none;
+  }
+
+  .grid .contenedor-subcategorias{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transform: translatex(-100%);
+      transition: .3s ease all;
+      overflow: auto;
+
+  }
+
+  .grid .contenedor-subcategorias.activo{
+    transform: translate(0);
+    
+}
+
+.grid .contenedor-subcategorias .subcategoria{
+    grid-template-columns: 1fr;
+}
+
+  .grid .btn-regresar{
+      display: inline-block;
+  }
+
+  .grid .categorias .subtitulo{
+      display: block;
+  }
+
+  .grid .contenedor-subcategorias .banner-subcategoria{
+      width: 100%;
+      min-height: 250px;
+      max-height: 250px;
+  }
+  
+  .grid .contenedor-subcategorias .enlaces-subcategoria {
+    min-height: 50vh;
+    overflow: auto;
+  }
+
+  .grid .contenedor-subcategorias .galeria-subcategoria a{
+      width: 25%;
+      height: 100%;
+  }
+
+/* Sección contacto*/
+.contacto{
+    width: 100%;
+    height: 800px;
+    background-color: #5cdd62de;
+}
+
+.contacto-caja{
+    position: absolute;
+    margin: 25px;
+    margin-left: 40px;
+    width: 85%;
+    height: 750px;
+    background-color: #ffffff;
+}
+
+.contacto-caja p{
+    margin-top: 10px;
+    margin-left: 50px;
+    font-size: 15px;
+}
+
+.horario{
+    margin-top: 50px;
+    margin-left: 50px;
+    font-weight: 500;
+    font-size: 30px;
+    color: var(--green);
+}
+
+.reloj{
+    margin-top: 30px;
+    margin-left: 140px;
+    width: 50px;
+}
+
+.ubicacion{
+    margin-top: 40px;
+    margin-left: 55px;
+    font-size: 20px;
+}
+
+.ubicacion p{
+    margin-left: 0px;
+}
+
+.location{
+    margin-top: 20px;
+    margin-left: 75px;
+    width: 80px;
+}
+
+.ubi{
+    color: var(--green);
+    font-weight: 500;
+}
+
+.llamanos{
+    margin-top: 40px;
+    margin-left: 100px;
+}
+
+.telefono-contacto{
+    color: var(--green);
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.llamanos p{
+    margin-left: 0px;
+    margin-top: 20px;
+    font-size: 17px;
+}
+
+.contacto-img{
+    margin-top: 30px;
+    width: 90px;
+    margin-left: 25px;
+}
+
+
+
+/* Footer */
+  footer{
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(66, 66, 66,0.1);
+}
+
+.footer-contenido{
+   display: inline-block;
+}
+
+.footer-contenido .box{
+    flex-basis: 50%;
+    padding: 20px 100px;
+}
+
+.box h3{
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.box .contenido{
+    margin: 20px 0 0 0;
+}
+
+.left .contenido .social {
+    margin: 20px 0 0 0;
+}
+
+.left .contenido .social a{
+    padding: 0 2px;
+}
+
+.left .contenido .social a span{
+    height: 40px;
+    width: 40px;
+    background: #1a1a1a;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.left .contenido .social a span:hover{
+    background: #27c75d;
+}
+
+.logo-footer{
+    width: 120px;
+}
+
+.fab fa-facebook-f{
+    width: 100px;
+}
+
+.acerca-footer{
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.eslogan{
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.logo-fb{
+    font-size: 50px;
+    margin-left: 30px;
+    color: #2a27b8;
+}
+
+.social{
+    margin-top: 20px;
+}
+
+.logo-fb:hover{
+    color: #0bb443;
+}
+
+.direccion-contenido{
+    padding-top: 30px;
+}
+
+.place:hover{
+    color: var(--green);
+}
+
+.telefono{
+    margin-top: 20px;
+}
+
+.telefono:hover{
+    color: var(--green);
+}
+
+.nombre{
+    margin-top: 20px;
+}
+
+.email{
+    margin-top: 10px;
+}
+
+.correo{
+    margin-top: 20px;
+}
+
+.correo:hover{
+    color: var(--green);
+}
+
+.mapa{
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.copy{
+    display: flex;
+    margin-left: 80px;
+    font-weight: 400;
+}
+
+
+}
+
+
+
